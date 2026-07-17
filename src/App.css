@@ -40,3 +40,52 @@
   margin-top: 20px;
   color: #2563eb;
 }
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+}
+
+
+.sidebar a {
+  display: block;
+  margin: 15px 0;
+  text-decoration: none;
+}
+
+
+.main {
+  flex: 1;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+
+.content {
+  padding: 30px;
+}
+
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+
+.card {
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}

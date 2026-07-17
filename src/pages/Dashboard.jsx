@@ -1,33 +1,41 @@
-import { useAuth } from '../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import { useUserProfile } from "../hooks/useUserProfile"
+import Layout from "../components/Layout"
+import MyCourses from "../components/MyCourses"
+
 
 function Dashboard() {
 
-  const { user, logout } = useAuth()
-  const navigate = useNavigate()
+  const { profile } = useUserProfile()
+
 
   return (
-    <div className="login-container">
-      <div className="login-box">
 
-        <h1>Dashboard</h1>
+  <Layout>
 
-  
-      <p>Welcome, {user.email}</p>
-  
+    <h1>
+      Welcome, {profile?.name}
+    </h1>
 
-        <button
-  onClick={() => {
-    logout()
-    navigate("/")
-  }}
->
-  Logout
-</button>
+    <MyCourses />
 
+    <div className="dashboard-grid">
+
+      <div className="card">
+        <h2>My Courses</h2>
+        <p>No courses enrolled yet.</p>
       </div>
+
+      <div className="card">
+        <h2>Upcoming Schedule</h2>
+        <p>No upcoming classes.</p>
+      </div>
+
     </div>
-  )
+
+  </Layout>
+
+)
 }
+
 
 export default Dashboard

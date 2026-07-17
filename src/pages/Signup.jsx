@@ -8,6 +8,7 @@ import "../App.css"
 
 function Signup() {
 
+  const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [message, setMessage] = useState("")
@@ -20,6 +21,11 @@ function Signup() {
 
     e.preventDefault()
 
+    if (!name || !email || !password) {
+  setMessage("Please fill out all fields")
+  return
+}
+
 
     try {
 
@@ -30,6 +36,7 @@ function Signup() {
 
   await setDoc(doc(db, "users", user.uid), {
 
+    name: name,
     email: user.email,
     createdAt: new Date(),
     role: "student"
@@ -69,6 +76,13 @@ function Signup() {
 
 
         <form onSubmit={handleSignup}>
+
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
 
 
           <input
